@@ -2,6 +2,8 @@
 
 Docker を使って Ubuntu 20.04 上に Neovim 開発環境を構築するリポジトリです。
 
+Neovim の使い方は [TUTORIAL.md](TUTORIAL.md) を参照してください。
+
 ## 構成
 
 | ファイル | 役割 |
