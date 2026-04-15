@@ -1,0 +1,18 @@
+services:
+  nvim:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NVIM_VERSION: v0.12.1
+    image: nvim-ubuntu2004:v0.12.1
+    container_name: nvim-dev
+    stdin_open: true   # docker run -i
+    tty: true          # docker run -t
+    volumes:
+      # ホストの nvim 設定をコンテナにマウント
+      - ./config:/home/nvimuser/.config/nvim
+      # 作業ディレクトリをマウント (任意)
+      - ./workspace:/home/nvimuser/workspace
+    working_dir: /home/nvimuser/workspace
+    command: nvim
