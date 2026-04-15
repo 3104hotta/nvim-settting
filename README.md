@@ -65,6 +65,14 @@ docker compose build
 docker compose run --rm nvim
 ```
 
+初回起動時にプラグインが自動インストールされます。プラグインデータは Docker ボリューム (`nvim-data`) に永続化されるため、2回目以降はインストールをスキップします。
+
+プラグインデータをリセットしたい場合:
+
+```bash
+docker volume rm nvim-setting_nvim-data
+```
+
 ## バージョン変更
 
 `docker-compose.yml` の `NVIM_VERSION` を変更して再ビルドします。

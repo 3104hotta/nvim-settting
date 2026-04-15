@@ -54,7 +54,8 @@ RUN groupadd --gid ${USER_GID} ${USERNAME} \
 USER ${USERNAME}
 WORKDIR /home/${USERNAME}
 
-# nvim の設定ディレクトリを作成
-RUN mkdir -p /home/${USERNAME}/.config/nvim
+# nvim の設定・ログディレクトリを作成
+RUN mkdir -p /home/${USERNAME}/.config/nvim \
+    && mkdir -p /home/${USERNAME}/.local/state/nvim
 
 CMD ["nvim"]
