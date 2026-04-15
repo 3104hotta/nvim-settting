@@ -11,6 +11,18 @@ Docker を使って Ubuntu 20.04 上に Neovim 開発環境を構築するリポ
 | `config/` | Neovim の設定ファイル置き場（`~/.config/nvim/` にマウント） |
 | `workspace/` | 作業ディレクトリ（コンテナ内 `~/workspace/` にマウント） |
 
+### 設定ファイル構成
+
+```
+config/
+├── init.lua                  # エントリーポイント
+└── lua/
+    ├── options.lua           # 基本設定
+    ├── keymaps.lua           # キーマップ
+    └── plugins/
+        └── init.lua          # プラグイン定義 (lazy.nvim)
+```
+
 ## 前提
 
 - Docker がインストールされていること
@@ -63,6 +75,46 @@ args:
 ```bash
 docker compose build --no-cache
 ```
+
+## プラグイン一覧
+
+| プラグイン | 用途 |
+|---|---|
+| [lazy.nvim](https://github.com/folke/lazy.nvim) | プラグインマネージャー |
+| [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) | カラースキーム |
+| [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | ステータスライン |
+| [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) | ファイルエクスプローラー |
+| [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | ファジーファインダー |
+| [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | シンタックスハイライト |
+| [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | LSP クライアント |
+| [mason.nvim](https://github.com/williamboman/mason.nvim) | LSP サーバーインストーラー |
+| [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) | 補完 |
+| [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | Git 差分表示 |
+| [which-key.nvim](https://github.com/folke/which-key.nvim) | キーバインドヘルプ |
+| [Comment.nvim](https://github.com/numToStr/Comment.nvim) | コメントトグル |
+| [nvim-autopairs](https://github.com/windwp/nvim-autopairs) | 括弧の自動補完 |
+
+## キーマップ
+
+`<leader>` は `Space` キーです。
+
+| キー | 機能 |
+|---|---|
+| `<leader>e` | ファイルエクスプローラー開閉 |
+| `<leader>ff` | ファイル検索 |
+| `<leader>fg` | 文字列検索（grep） |
+| `<leader>fb` | バッファ一覧 |
+| `<leader>w` | ファイル保存 |
+| `<leader>q` | 終了 |
+| `<leader>ca` | コードアクション（LSP） |
+| `<leader>rn` | リネーム（LSP） |
+| `<leader>lf` | フォーマット（LSP） |
+| `gd` | 定義へジャンプ（LSP） |
+| `gr` | 参照一覧（LSP） |
+| `K` | ホバードキュメント（LSP） |
+| `<C-h/j/k/l>` | ウィンドウ移動 |
+| `<S-h> / <S-l>` | バッファ切り替え |
+| `gcc` | 行コメントトグル |
 
 ## 備考
 
